@@ -14,4 +14,3 @@ add_compile_options( -g )
 add_definitions( -DWITHOUT_NUMPY )
 
 subdirs(src)
-
