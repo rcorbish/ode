@@ -17,13 +17,21 @@ Solution * ode( OdeParams &p ) ;
 
 int main( int argc, char **argv ) {
 
-
+	// 
+	// Defines an 2nd order ODE of the form 
+	// 0 = ay" + by' + cy
+	// with initial params
+	// yp0 = initial y'
+	// y   = initial y
+	// t   = starting time
+	//
+	//    a,    b,   c,  y0,  yp0,  t0
 	OdeParams p[] = {
-		{ 1,    2,   3,  4,  6,  0 },
-		{ 2,  -16,  32,  2, -1,  0 },
-		{ 4,    8,   1,  3, -2,  0 },
-		{ -12,-12,  12,  3,  1,  0 },
-		{ 1  ,  4,   0,  0,  0, .001 },
+		{ 1,    2,   3,   4,    6,   0 },
+		{ 2,  -16,  32,   2,   -1,   0 },
+		{ 4,    8,   1,   3,   -2,   0 },
+		{ -12,-12,  12,   3,    1,   0 },
+		{ 1  ,  4,   0,   0, 0.01,   0 }
 	} ;
 	const int M = sizeof(p) / sizeof( p[0] ) ;
 
@@ -92,7 +100,7 @@ Solution * ode( OdeParams &p ) {
 	} else {
 		std::printf( "%+4.0fy = 0", p.c ) ;
 	}
- 	std::cout << "&\\longmapsto" << std::endl ;
+ 	std::cout << "&\\xrightarrow{y_" << p.t0 << "=" << p.y0 <<  "\\space y'_" << p.t0 << "=" << p.yp0 <<"}" << std::endl ;
 
 	Solution *soln = NULL ;
 

@@ -13,7 +13,7 @@ struct OdeParams {
 	double yp0 ;
 	double t0 ;
 
-	OdeParams( double _a, double _b, double _c, double _t0, double _y0, double _yp0 ) :
+	OdeParams( double _a, double _b, double _c, double _y0, double _yp0, double _t0 ) :
 	a(_a), b(_b), c(_c), t0(_t0), y0(_y0), yp0(_yp0) {}
 } ;
 
