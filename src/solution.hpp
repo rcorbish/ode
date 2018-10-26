@@ -3,6 +3,21 @@
 
 #include <string>
 
+
+struct OdeParams {
+	double a ;
+	double b ;
+	double c ;
+
+	double y0 ;
+	double yp0 ;
+	double t0 ;
+
+	OdeParams( double _a, double _b, double _c, double _t0, double _y0, double _yp0 ) :
+	a(_a), b(_b), c(_c), t0(_t0), y0(_y0), yp0(_yp0) {}
+} ;
+
+
 class Solution {
 	public :
 		virtual const std::string toString() = 0 ;
@@ -20,7 +35,7 @@ class Simple : public Solution {
 	public :
 		const std::string toString() ;
 		double y( double t ) ;
-		Simple( double a, double b, double c, double t0, double y0, double yp0 ) ;
+		Simple( OdeParams &p ) ;
 } ;
 
 
@@ -34,7 +49,7 @@ class Single : public Solution {
 	public :
 		const std::string toString() ;
 		double y( double t ) ;
-		Single( double a, double b, double c, double t0, double y0, double yp0 ) ;
+		Single( OdeParams &p ) ;
 } ;
 
 
@@ -50,5 +65,5 @@ class Complex : public Solution {
 	public :
 		const std::string toString() ;
 		double y( double t ) ;
-		Complex( double a, double b, double c, double t0, double y0, double yp0 ) ;
+		Complex( OdeParams &p ) ;
 } ;
