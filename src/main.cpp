@@ -18,12 +18,13 @@ Solution * ode( OdeParams &p ) ;
 int main( int argc, char **argv ) {
 
 	// 
-	// Defines an 2nd order ODE of the form 
-	// 0 = ay" + by' + cy
+	// Defines an array of 2nd order ODE of the form 
+	// 	ay" + by' + cy = 0
+	//
 	// with initial params
-	// yp0 = initial y'
-	// y   = initial y
-	// t   = starting time
+	// 	y   = initial y
+	// 	yp0 = initial y'
+	// 	t   = starting time
 	//
 	//    a,    b,   c,  y0,  yp0,  t0
 	OdeParams p[] = {
