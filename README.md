@@ -10,7 +10,7 @@ Solve simple 2nd order ODEs
 ### compiling ...
 
 ```
-git clone ...
+git clone <this repo>
 cmake 
 make
 ```
@@ -18,7 +18,7 @@ make
 if no python matplot required 
 
 ```
-git clone ...
+git clone <this repo>
 cmake -D_NO_MATPLOT=1 .
 make
 ```
