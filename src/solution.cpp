@@ -3,18 +3,32 @@
 
 #include <math.h>
 
-
-std::string * floatPrinter( double x ) {
+/*!
+ * Print a number used as a prefix for a variable.
+ * 
+ * example: ax^2  - we'll print a
+ * 
+ * a = 0 - return an empty string 
+ * a = -1 - return a single - sign
+ * a = +1 - return a space " "
+ * a = other - return a number e.g. 1.65
+ * 
+ */
+std::string floatPrinter( double x ) {
 	std::string *rc = NULL ;
 
 	if( x == -1.0 ) {
 		rc = new std::string( "-" ) ; 
+	} else if( x == 1.0 ) {
+		rc = new std::string( " " ) ;
 	} else if( x != 0.0 ) {
 		char buf[10] ;
 		std::sprintf( buf, "%4.2g", x  ) ; 
 		rc = new std::string( buf ) ;
+	} else {
+		rc = new std::string() ;
 	}
-	return rc ;
+	return *rc ;
 }
 
 const std::string Simple::toString() {
@@ -22,32 +36,28 @@ const std::string Simple::toString() {
 
 	int n = sprintf( buf, "y = " ) ;
 
-	std::string *s = floatPrinter( c1 ) ;
-	std::string *r = floatPrinter( r1 ) ;
-	if( s ) {
-		if( r ) {
-			n += sprintf( buf+n, "%s e^{%st}", s->c_str(), r->c_str() ) ; 
+	std::string s = floatPrinter( c1 ) ;
+	std::string r = floatPrinter( r1 ) ;
+	if( !s.empty() ) {
+		if( !r.empty() ) {
+			n += sprintf( buf+n, "%s e^{%st}", s.c_str(), r.c_str() ) ; 
 		} else {
-			n += sprintf( buf+n, "%s ", s->c_str() ) ; 
+			n += sprintf( buf+n, "%s ", s.c_str() ) ; 
 		}
 	}
-	delete r ;
-	delete s ;
 
 	s = floatPrinter( c2 ) ;
 	r = floatPrinter( r2 ) ;
-	if( s ) {
+	if( !s.empty() ) {
 		if( c2 > 0 ) {
 			n += sprintf( buf+n, "+" ) ; 
 		}
-		if( r ) {
-			n += sprintf( buf+n, "%s e^{%st}", s->c_str(), r->c_str() ) ; 
+		if( !r.empty() ) {
+			n += sprintf( buf+n, "%s e^{%st}", s.c_str(), r.c_str() ) ; 
 		} else {
-			n += sprintf( buf+n, "%s", s->c_str() ) ; 
+			n += sprintf( buf+n, "%s", s.c_str() ) ; 
 		}
 	}
-	delete r ;
-	delete s ;
 
 	std::string rc = buf ;
 	return rc ;
@@ -84,28 +94,24 @@ const std::string Single::toString() {
 
 	int n = sprintf( buf, "y = " ) ;
 
-	std::string *s = floatPrinter( c1 ) ;
-	std::string *rs = floatPrinter( r ) ;
-	if( s ) {
-		if( rs ) {
-			n += sprintf( buf+n, "%s e^{%st} +", s->c_str(), rs->c_str() ) ; 
+	std::string s = floatPrinter( c1 ) ;
+	std::string rs = floatPrinter( r ) ;
+	if( !s.empty() ) {
+		if( !rs.empty() ) {
+			n += sprintf( buf+n, "%s e^{%st} +", s.c_str(), rs.c_str() ) ; 
 		} else {
-			n += sprintf( buf+n, "%s +", s->c_str() ) ; 
+			n += sprintf( buf+n, "%s +", s.c_str() ) ; 
 		}
 	}
-	delete s ;
 
 	s = floatPrinter( c2 ) ;
-	if( s ) {
-		if( rs ) {
-			n += sprintf( buf+n, "%st e^{%st}", s->c_str(), rs->c_str() ) ; 
+	if( !s.empty() ) {
+		if( !rs.empty() ) {
+			n += sprintf( buf+n, "%st e^{%st}", s.c_str(), rs.c_str() ) ; 
 		} else {
-			n += sprintf( buf+n, "%st", s->c_str() ) ; 
+			n += sprintf( buf+n, "%st", s.c_str() ) ; 
 		}
 	}
-	delete rs ;
-	delete s ;
-
 	
 	std::string rc = buf ;
 	return rc ;
@@ -139,22 +145,18 @@ const std::string Complex::toString() {
 
 	int n = sprintf( buf, "y = " ) ;
 
-	std::string *s = floatPrinter( c1 ) ;
-	std::string *res = floatPrinter( re ) ;
-	std::string *ims = floatPrinter( im ) ;
+	std::string s = floatPrinter( c1 ) ;
+	std::string res = floatPrinter( re ) ;
+	std::string ims = floatPrinter( im ) ;
 
-	if( s ) {
-		n += sprintf( buf+n, "%s e^{%st} \\cos(%st) +", s->c_str(), res->c_str() , ims->c_str() ) ; 
+	if( !s.empty() ) {
+		n += sprintf( buf+n, "%s e^{%st} \\cos(%st) +", s.c_str(), res.c_str() , ims.c_str() ) ; 
 	}
-	delete s ;
 
 	s = floatPrinter( c2 ) ;
-	if( s ) {
-		n += sprintf( buf+n, "%s e^{%st} \\sin(%st)", s->c_str(), res->c_str() , ims->c_str() ) ; 
+	if( !s.empty() ) {
+		n += sprintf( buf+n, "%s e^{%st} \\sin(%st)", s.c_str(), res.c_str() , ims.c_str() ) ; 
 	}
-	delete res ;
-	delete ims ;
-	delete s ;
 
 	std::string rc = buf ;
 	return rc ;

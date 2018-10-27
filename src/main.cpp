@@ -26,13 +26,13 @@ int main( int argc, char **argv ) {
 	// 	yp0 = initial y'
 	// 	t   = starting time
 	//
-	//    a,    b,   c,  y0,  yp0,  t0
+	//    a,     b,   c,  y0,  yp0,  t0
 	OdeParams p[] = {
-		{ 1,    2,   3,   4,    6,   0 },
-		{ 2,  -16,  32,   2,   -1,   0 },
-		{ 4,    8,   1,   3,   -2,   0 },
-		{ -12,-12,  12,   3,    1,   0 },
-		{ 1  ,  4,   0,   0, 0.01,   0 }
+		{ 1,     2,   3,   4,    6,   0 },
+		{ 2,   -16,  32,   2,   -1,   0 },
+		{ 4,     8,   1,   3,   -2,   0 },
+		{ -12, -12,  12,   3,    1,   0 },
+		{ 9.8,  -2,   0,   100,  0,   0 }
 	} ;
 	const int M = sizeof(p) / sizeof( p[0] ) ;
 
@@ -53,7 +53,7 @@ int main( int argc, char **argv ) {
 	std::vector<double> y(100) ;
 
 	double t = 0 ;
-	for( int i=0 ; i<100 ; i++, t+=0.3 ) {
+	for( int i=0 ; i<100 ; i++, t+=0.01 ) {
 		y[i] = soln->y( t ) ;
 	}	
 	delete soln ;
@@ -115,4 +115,5 @@ Solution * ode( OdeParams &p ) {
 
 	return soln ;
 }
+
 

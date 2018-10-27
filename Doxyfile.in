@@ -1,0 +1,9 @@
+
+PROJECT_NAME           = "ODE"
+PROJECT_BRIEF          = "Solve homogenous second order ordinary differential equations"
+
+INPUT                  = @CMAKE_CURRENT_SOURCE_DIR@/src @CMAKE_CURRENT_SOURCE_DIR@/docs
+OUTPUT_DIRECTORY       = @CMAKE_CURRENT_BINARY_DIR@/doxygen/
+
+SHOW_FILES             = NO
+USE_MATHJAX            = YES

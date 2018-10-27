@@ -7,4 +7,7 @@ ode
 __pycache__/
 pytst.cpp
 sample.py
-
+CMakeDoxygenDefaults.cmake
+Doxyfile
+doxygen/
+CMakeDoxyfile.in
