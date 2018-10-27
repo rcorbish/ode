@@ -3,11 +3,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include <iostream>
+#include <vector>
 
 #include "solution.hpp"
-#include "matplotlibcpp.h"
 
+#ifndef NO_MATPLOT
+#include "matplotlibcpp.h"
 namespace plt = matplotlibcpp;
+#endif
 
 
 Solution * ode( OdeParams &p ) ;
@@ -58,8 +61,10 @@ int main( int argc, char **argv ) {
 	}	
 	delete soln ;
 
+#ifndef NO_MATPLOT
 	plt::plot( y ) ;
 	plt::show() ;
+#endif
 
 	return 0 ;
 }

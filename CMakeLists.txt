@@ -13,6 +13,11 @@ add_compile_options( -std=c++14 )
 add_compile_options( -g )
 add_definitions( -DWITHOUT_NUMPY )
 
+if( NO_MATPLOT ) 
+  add_definitions( -DNO_MATPLOT=1 )
+endif( NO_MATPLOT ) 
+
+
 subdirs(src)
 
 # first we can indicate the documentation build as an option and set it to ON by default
