@@ -3,7 +3,7 @@ Solve simple 2nd order ODEs
 
 ### prerequisites
 
-* cmake  (probably ==build-essential== as well)
+* cmake  (probably **build-essential** as well)
 * (optional) doxygen doxygen-latex graphviz
 * (optional) python3.6-dev  ( to show plot of results )
 
@@ -41,6 +41,12 @@ Without ```PYTHONPATH``` being set I kept getting the following
     Aborted (core dumped)
 ```
 until I added this ``` export PYTHONPATH=${HOME}/anaconda3/lib/python3.6/site-packages ```
+
+```./ode ```
+or
+``` ./run.sh ```
+
+
 
 
 
