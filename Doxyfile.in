@@ -7,3 +7,6 @@ OUTPUT_DIRECTORY       = @CMAKE_CURRENT_BINARY_DIR@/doxygen/
 
 SHOW_FILES             = NO
 USE_MATHJAX            = YES
+MATHJAX_FORMAT         = HTML-CSS
+MATHJAX_RELPATH        = http://cdn.mathjax.org/mathjax/latest
+MATHJAX_EXTENSIONS     = TeX/AMSmath TeX/AMSsymbols TeX/AMSmath TeX/cancel

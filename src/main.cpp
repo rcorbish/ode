@@ -31,12 +31,12 @@ int main( int argc, char **argv ) {
 	//
 	//    a,     b,   c,  y0,  yp0,  t0
 	OdeParams p[] = {
-		{ 1,     2,   3,   4,    6,   0 },
 		{ 2,   -16,  32,   2,   -1,   0 },
 		{ 4,     8,   1,   3,   -2,   0 },
 		{ -12, -12,  12,   3,    1,   0 },
-		{ 9.8,  -2,   0,   100,  0,   0 }
-	} ;
+		{ 9.8,  -1,   0,   1000, -5,  100 },
+		{ 1,     2,   3,   -2,    2,   0 }
+		} ;
 	const int M = sizeof(p) / sizeof( p[0] ) ;
 
 	std::cout << "Plug this into: https://katex.org/" << std::endl ;
@@ -53,13 +53,14 @@ int main( int argc, char **argv ) {
 	int N = M-1 ;
 	Solution *soln = ode( p[N] ) ;
 
-	std::vector<double> y(100) ;
+	std::vector<double> y(1000) ;
 
 	double t = 0 ;
-	for( int i=0 ; i<100 ; i++, t+=0.01 ) {
+	for( int i=0 ; i<1000 ; i++, t+=0.02 ) {
 		y[i] = soln->y( t ) ;
 	}	
 	delete soln ;
+
 
 #ifndef NO_MATPLOT
 	plt::plot( y ) ;

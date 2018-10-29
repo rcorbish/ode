@@ -4,6 +4,29 @@
 #include <string>
 
 /*!\mainpage
+ * \f$
+ * \begin{aligned}
+ * 
+ * y &= {a \over {c+2}}  \\ \\
+ * y  \color{red}{(c+2)} &= { {a  \color{red}{(c+2)} } \over {(c+2)} } \\ \\
+ * y  (c+2) &= { {a  \color{magenta}{(c+2)} } \over \color{magenta}{(c+2)} } \\ \\
+ * y  (c+2) &= a \\
+ * 
+ * \end{aligned}
+ * \f$
+ * <hr>
+ * \f$
+ * \begin{aligned}
+ * y = {a \over {c+2}} &\therefore a = y ( c + 2 ) \\
+ * y = {a \over {40}} &\therefore a = 40y  \\
+ * y = {5 a} &\therefore a = {y \over 5}  \\
+ * y = a ({x+5}) &\therefore a =  \\
+ * y = a + ({x+5}) &\therefore a =   \\
+ * y = {a \over e^{(x-2)} } &\therefore a =  \\
+ * y = {a \over {\int {\frac{x}{\pi^x} dx } } \space log_{10}(x) }  &\therefore a =  \\
+ * \end{aligned}
+ * \f$
+ * <hr>
  * Solves equations of the form <br><br>
  * \f$ a \frac{d^2y}{dt^2} + b \frac{dy}{dt} + c y = 0\>\left\{ a \neq 0 \right. \f$ 
  * <br><br>given initial settings <br><br>
